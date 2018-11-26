@@ -28,4 +28,21 @@ tags:
     let (q,r) = x.quotientAndRemainder(dividingBy:Int)//q==1071;r=757
     ~~~
 
-    
+  * 利用系统的URLComponents获取IOS中对应结构的元素
+
+    * 属性值
+
+      ~~~
+      public var scheme:String?	协议
+      public var user:String?
+      public var password:String?
+      public var host:String?	域名
+      public var port:String?	端口
+      public var path:String?	路径
+      public var query:String?	参数
+      public var fragment:String?
+      public var queryItem:[URLQueryItem]?	参数集合
+      ~~~
+
+  * URLQueryItem
+
