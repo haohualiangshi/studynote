@@ -44,5 +44,17 @@ tags:
       public var queryItem:[URLQueryItem]?	参数集合
       ~~~
 
-  * URLQueryItem
+
+  #### 字符串String
+
+  * 使用`\()`可以快速的将其他类型转为字符串；可以使用`+`组合字符串；多行字符串使用`"""`三个双引号括起来
+  * 获取字符串中某一个元素的位置`string.firstIndex(of:"")??string.endIndex`
+  * `isEmpty:Bool`一个布尔值；表示集合是否为空；也可测试字符串是否为空；使用`count`获取字符创的长度
+  * 从文件或URL创建字符串`init(contentsOf:URL) 或者init(contentOfFile:String)`;使用`append(string/character)`将给定的字符或者字符串追加到字符串中
+  * 使用`insert(Character,at:String.Index)`将指定字符串插入到指定位置
+  * 替换子字符串`replaceSubrange`
+  * 删除子字符串
+    * `remove(at:String.Index) -> Character`删除并返回指定位置的字符
+    * `removeAll(keepingVapacity:Bool)`删除所有元素
+    * `removeAll(where:(character) -> Bool)`删除满足给定微词的左右元素
 
