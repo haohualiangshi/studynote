@@ -58,3 +58,14 @@ tags:
     * `removeAll(keepingVapacity:Bool)`删除所有元素
     * `removeAll(where:(character) -> Bool)`删除满足给定微词的左右元素
 
+#### 查找字符串
+
+* `hasPrefix(String)`返回一个布尔值；字符串是否以指定的前缀开头
+* `hasSuffix(string)`返回一个布尔值；指示字符串是否以指定的后缀结尾
+* `contains(Character)`返回一个布尔值；是否以指定的后缀结尾
+
+### 集合
+
+* 集合包含：数组Array/字典Dictionary/Set无序的独特元素集合
+* 数组：使用`isEmpty`判断数组是否为空；使用`first`和`last`属性安全访问第一个和最后一个元素的值；如果为空则为`nil`
+* `append(_:)`将单个元素添加到数组的末尾；`append(contentsOf:)`同时添加多个元素
