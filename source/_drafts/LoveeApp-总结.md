@@ -219,3 +219,111 @@ categories: 项目总结
            }
        }
    ~~~
+
+#### 使用WKWebView和UIProgressView实现网页的加载和进度条
+
+~~~swift
+
+//  d创建一个基类用于加载无交互的静态页面和用于其他扩展的父类
+
+import UIKit
+import RxSwift
+import SnapKit
+import WebKit
+
+
+class BaseWebviewController: UIViewController {
+    public var webview:WKWebView?
+    lazy private var progressView: UIProgressView = {
+        self.progressView = UIProgressView.init(frame: CGRect(x: CGFloat(0), y: CGFloat(getStatusBarAndNavigationBarHeight(controller: self)), width: SCREEN_WIDTH, height: CGFloat(10)))
+        self.progressView.tintColor = COLOR_0197F6      // 进度条颜色
+        self.progressView.trackTintColor = COLOR_WHITE // 进度条背景色
+        return self.progressView
+    }()
+    private var titleString:String?
+    private var urlStr:String?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = COLOR_WHITE
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        let item = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = item;
+        navigationItem.title = titleString
+        let webViewConfig = WKWebViewConfiguration()
+        let preference = WKPreferences()
+        preference.javaScriptCanOpenWindowsAutomatically = true
+        webViewConfig.preferences = preference
+//        webViewConfig.preferences.javaScriptCanOpenWindowsAutomatically = true
+        webview = WKWebView.init(frame: CGRect(x: CGFloat(0), y:CGFloat(CGFloat(getStatusBarAndNavigationBarHeight(controller: self))), width: self.view.frame.width, height: self.view.frame.height - CGFloat(getStatusBarAndNavigationBarHeight(controller: self))), configuration: webViewConfig)
+        self.automaticallyAdjustsScrollViewInsets = false
+        if #available(iOS 11.0, *) {
+            webview?.scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+            self.edgesForExtendedLayout = UIRectEdge.top
+            
+        }
+        
+        setUpWKwebView()
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .default
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+//        UIApplication.shared.statusBarStyle = .default
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    init(titleStr:String,webViewURLStr:String) {
+        super.init(nibName: nil, bundle: nil)
+        titleString = titleStr
+        urlStr = webViewURLStr
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    // 创建webview
+    private func setUpWKwebView() {
+        let url = URL.init(string: replaceURLPlaceholder(url: urlStr!))
+        webview?.load(URLRequest.init(url: url!))
+        webview?.backgroundColor = COLOR_WHITE
+        view.addSubview(webview!)
+        view.addSubview(progressView)
+        self.progressView.progress = 0.1
+        webview?.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
+
+    }
+
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        //  加载进度条
+        if keyPath == "estimatedProgress"{
+            progressView.alpha = 1.0
+            progressView.setProgress(Float((self.webview?.estimatedProgress) ?? 0), animated: true)
+            if (self.webview?.estimatedProgress ?? 0.0)  >= 1.0 {
+                UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseOut, animations: {
+                    self.progressView.alpha = 0
+                }, completion: { (finish) in
+                    self.progressView.setProgress(0.0, animated: false)
+                })
+            }
+        }
+    }
+    
+    
+    deinit {
+        webview?.removeObserver(self, forKeyPath: "estimatedProgress")
+        webview?.uiDelegate = nil
+        webview?.navigationDelegate = nil
+    }
+}
+
+
+~~~
+

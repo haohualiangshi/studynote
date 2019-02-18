@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 坚持就是胜利
-subtitle:
-description:
+title: 苦中作乐
+subtitle: 坚持就是胜利
+description: "阿豪的个人博客、主要涉及前端知识点和swift"
 keywords:
-author: John Doe
-language:
+author: AHao
+language: zh-lans
 timezone:
 
 # URL
@@ -27,6 +27,8 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+  - README.md
+  - CNAME
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -73,7 +75,8 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+#theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
