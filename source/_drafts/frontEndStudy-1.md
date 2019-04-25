@@ -152,7 +152,53 @@ HTML定义了很多提供格式化输出的元素；如粗体或者斜体
   </dl>
   ~~~
 
-  
+### CSS
+
+**概念：**css称为层叠样式表，可以通过权重实现样式的叠加覆盖；css样式由选择器和属性/属性值构成；
+
+**权重：**权重指的是样式的优先级
+
+* !important,加在样式属性值后。权重值为10000
+* 内联样式。权重为1000
+* id选择器。权重为100
+* 类/伪类/属性选择器权重为10
+* 标签选择器和伪元素选择器权重为1
+* 通配符选择器/子选择器/相邻选择器/兄弟选择器权重为0；
+
+| 选择器               | 例子 | 描述 |
+| -------------------- | ---- | ---- |
+| .class-name          | .bg  |      |
+| #id-name             |      |      |
+| *                    |      |      |
+| element              |      |      |
+| element,element      |      |      |
+| element element      |      |      |
+| element>element      |      |      |
+| element+element      |      |      |
+| [attribute]          |      |      |
+| [attribute=value]    |      |      |
+| [attribute~=value]   |      |      |
+| [attribute\| =value] |      |      |
+| :link                |      |      |
+| :visited             |      |      |
+| :active              |      |      |
+| :hover               |      |      |
+| :focus               |      |      |
+| :first-letter        |      |      |
+| :first-line          |      |      |
+| :first-child         |      |      |
+| ::before             |      |      |
+| ::after              |      |      |
+| :lang(language)      |      |      |
+|                      |      |      |
+
+
+
+
+
+
+
+
 
 
 
