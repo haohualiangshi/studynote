@@ -165,32 +165,32 @@ HTML定义了很多提供格式化输出的元素；如粗体或者斜体
 * 标签选择器和伪元素选择器权重为1
 * 通配符选择器/子选择器/相邻选择器/兄弟选择器权重为0；
 
-| 选择器               | 例子 | 描述 |
-| -------------------- | ---- | ---- |
-| .class-name          | .bg  |      |
-| #id-name             |      |      |
-| *                    |      |      |
-| element              |      |      |
-| element,element      |      |      |
-| element element      |      |      |
-| element>element      |      |      |
-| element+element      |      |      |
-| [attribute]          |      |      |
-| [attribute=value]    |      |      |
-| [attribute~=value]   |      |      |
-| [attribute\| =value] |      |      |
-| :link                |      |      |
-| :visited             |      |      |
-| :active              |      |      |
-| :hover               |      |      |
-| :focus               |      |      |
-| :first-letter        |      |      |
-| :first-line          |      |      |
-| :first-child         |      |      |
-| ::before             |      |      |
-| ::after              |      |      |
-| :lang(language)      |      |      |
-|                      |      |      |
+| 选择器               | 例子    | 描述                                          |
+| -------------------- | ------- | --------------------------------------------- |
+| .class-name          | .bg     | 类选择器                                      |
+| #id-name             | #id     | id选择器                                      |
+| *                    | *{}     | 通配符选择器                                  |
+| element              | div     | 元素选择器                                    |
+| element,element      | div,p   | 并集选择器                                    |
+| element element      | div div | 后代选择器                                    |
+| element>element      | div>div | 子代选择器                                    |
+| element+element      | div+div | 兄弟选择器，符合条件的下一个兄弟元素          |
+| [attribute]          | [href]  | 属性选择器                                    |
+| [attribute=value]    |         |                                               |
+| [attribute~=value]   |         | 选择属性包含指定值的所有元素                  |
+| [attribute\| =value] |         | 选择属性带有包含指定值的的所有元素设置样式    |
+| :link                |         | 伪类选择器，超链接点击之前                    |
+| :visited             |         | 伪类选择器，超链接点击之后                    |
+| :active              |         | 伪类选择器，获取焦点的状态                    |
+| :hover               |         | 伪类选择器，鼠标悬停在标签上部                |
+| :focus               |         | 伪类选择器，鼠标按下的状态                    |
+| :first-letter        |         | 伪元素选择器， 向段落的第一个字符添加特殊样式 |
+| :first-line          |         | 伪元素选择器，向段落的第一行添加特殊样式      |
+| :first-child         |         | 伪元素选择器，选择元素的第一个子元素          |
+| ::before             |         | 伪元素，需要使用content属性配合               |
+| ::after              |         | 伪元素，同上                                  |
+| :lang(language)      |         |                                               |
+|                      |         |                                               |
 
 
 
