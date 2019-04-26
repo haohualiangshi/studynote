@@ -171,9 +171,9 @@ HTML定义了很多提供格式化输出的元素；如粗体或者斜体
 | #id-name             | #id     | id选择器                                      |
 | *                    | *{}     | 通配符选择器                                  |
 | element              | div     | 元素选择器                                    |
-| element,element      | div,p   | 并集选择器                                    |
+| element,element      | div,p   | 并集选择器（选择器分组）                      |
 | element element      | div div | 后代选择器                                    |
-| element>element      | div>div | 子代选择器                                    |
+| element>element      | div>div | 子代选择器（子元素选择器）                    |
 | element+element      | div+div | 兄弟选择器，符合条件的下一个兄弟元素          |
 | [attribute]          | [href]  | 属性选择器                                    |
 | [attribute=value]    |         |                                               |
@@ -186,13 +186,113 @@ HTML定义了很多提供格式化输出的元素；如粗体或者斜体
 | :focus               |         | 伪类选择器，鼠标按下的状态                    |
 | :first-letter        |         | 伪元素选择器， 向段落的第一个字符添加特殊样式 |
 | :first-line          |         | 伪元素选择器，向段落的第一行添加特殊样式      |
-| :first-child         |         | 伪元素选择器，选择元素的第一个子元素          |
+| :first-child         |         | 伪类选择器，选择元素的第一个子元素            |
 | ::before             |         | 伪元素，需要使用content属性配合               |
 | ::after              |         | 伪元素，同上                                  |
 | :lang(language)      |         |                                               |
 |                      |         |                                               |
 
+**分类：**按照功能可分为布局，修饰文案，背景；
 
+* 布局：
+
+  * 盒模型种类：标准盒模型和IE盒模型；区别是对待padding值和border不同的解决方案
+
+    ~~~css
+    box-sizing:content-box; //标准盒模型
+    box-sizing:border-box;	// IE盒模型
+    ~~~
+
+  * 内边距:padding:padding-top padding-right padding-bottom padding-left;
+
+  * 外边距:margin:margin-top margin-right margin-bottom margin-left;
+
+  * 边框
+
+    * 边框样式，可以定义多个样式；顺序是上右下左：border-style:border-top-style border-right-style border-bottom-style border-left-style;
+
+      ~~~css
+      p.aside {border-style: solid dotted dashed double;}
+      ~~~
+
+    * 边框宽度：可定义多个宽度：border-width:border-top-width border-right-width border-bottom-width border-left-width;
+
+    * 边框颜色：可定义多个颜色；border-color: border-top-color border-right-color border-bottom-color border-left-color;
+
+  * 外边距合并:当两个垂直外边距相遇时；他们将形成一个外边距；合并后的外边距的高度等于两个发生合并的元素中外边距最大的那个；
+
+  * 定位：
+
+    * `position:static`:元素文档正常生成；不脱离文档流；
+    * `position:relative`:相对定位；脱离文档流；元素相对本身进行定位；但原本所占空间保留
+    * `position:absolute`:绝对定位；脱离文档流；相对最近一个设置`position:relative/absolute/fixed`属性的父元素定位；
+    * `position:fixed`:绝对定位；相对于视图进行定位
+
+  * 浮动：`float`脱离文档流；使用`clear`清除浮动
+
+* 修饰文案
+
+  * 字体大小：`font-size`
+  * 文本缩进：`text-indent`
+  * 对齐方式:` text-align`
+  * 文字间隔:
+    * `word-spacing`：设置文字或者单词之间的间隔标准
+    * `letter-spacing`: 设置字母间隔
+  * 字符转换：`text-transform`处理文本的大小写
+  * 文本装饰
+  * 空白字符处理：`white-space`会影响到用户代理对源文档中空格/换行和tab字符串的处理
+  * 设置文本方向：`text-direction`设置文本的对齐方向
+  * 设置字体：`font-family`
+
+  **demo：单行省略**
+
+  ~~~css
+  width:200px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  ~~~
+
+  **多行省略；适用于`-webkit-`内核**
+
+  ~~~css
+  display: -webkit-box;
+  height：300px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  ~~~
+
+  
+
+* 背景
+
+  * 背景色：`background-color`
+
+  * 背景图: `background-image:url(背景图路径)`定义引入的背景图路径
+
+  * 背景平铺：`background-repeat`
+
+  * 背景定位：`background-position`
+
+  * 背景大小：`background-size`
+
+  * 背景关联: `background-attachment`通过该属性可以声明图像相对于可视区是固定的活着滚动的；
+
+  * 综合属性：`background:属性集合,空格隔开`
+
+    ~~~css
+    background:background-color background-image background-repeat background-position background-size background-attachment;
+    ~~~
+
+**颜色**：css中颜色有六种定义方法
+
+* 十六进制：`#fff,#f2f3f4`
+* RGB颜色：`rgb(0,0,255)`
+* RGBA颜色：`rgba(255,0,0,0.5)`
+* HSL:`hsl(120,65%,75%)`;色盘上的度数（从 0 到 360） - 0 (或 360) 是红色，120 是绿色，240 是蓝色。Saturation 是百分比值；0% 意味着灰色，而 100% 是全彩。Lightness 同样是百分比值；0% 是黑色，100% 是白色。
+* HSLA颜色：`hsla(120,65%,75%,0.3)`:hsla(hue色调, saturation色饱和度, lightness亮度, alpha不透明度)
+* 预定义/跨浏览器颜色名：green；red
 
 
 
