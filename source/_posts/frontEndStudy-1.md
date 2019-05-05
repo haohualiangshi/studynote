@@ -1,7 +1,12 @@
 ---
 title: frontEndStudy-1
-tags: [前端之路,html,css]
+tags:
+  - 前端之路
+  - html
+  - css
+date: 2019-05-05 10:29:15
 ---
+
 
 ## 前端进阶之路-HTML+CSS
 
