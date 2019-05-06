@@ -137,7 +137,68 @@ manifest文件一般由三部分组成：
 **cookie：**
 
 1. 最大支持4096字节；
+
 2. Cookie默认情况都会随着Http请求发送到后台服务器，但并不是所有请求都需要Cookie的，比如：js、css、图片等请求则不需要cookie。
+
+   ~~~js
+   //设置cookie
+   /**
+    * 
+    * @desc  设置Cookie
+    * @param {String} name 
+    * @param {String} value 
+    * @param {Number} days 
+    */
+   function setCookie(name, value, days) {
+       var date = new Date();
+       date.setDate(date.getDate() + days);
+       document.cookie = name + '=' + value + ';expires=' + date;
+   }
+   //获取cookie
+   function getCookie(name) {
+       var arr = document.cookie.replace(/\s/g, "").split(';');
+       for (var i = 0; i < arr.length; i++) {
+           var tempArr = arr[i].split('=');
+           if (tempArr[0] == name) {
+               return decodeURIComponent(tempArr[1]);
+           }
+       }
+       return '';
+   }
+   //根据name删除cookie
+   var setCookie = require('./setCookie');
+   /**
+    * 
+    * @desc 根据name删除cookie
+    * @param  {String} name 
+    */
+   function removeCookie(name) {
+       // 设置已过期，系统会立刻删除cookie
+       setCookie(name, '1', -1);
+   }
+   ~~~
+
+**会话级别的本地存储：sessionStorage**;数据是以key-value形式存储的；与浏览器当前会话相关；会话结束后数据自动清除；sessionStorage提供四个方法辅助我们进行本地存储的相关操作；
+
+~~~js
+ //添加key-value 数据到 sessionStorage
+ sessionStorage.setItem("demokey", "http://blog.itjeek.com");
+ //通过key来获取value
+ var dt = sessionStorage.getItem("demokey");
+// 删除某一条目存储
+sessionStorage.removeItem(key)
+
+ //清空所有的key-value数据。
+ //sessionStorage.clear();
+~~~
+
+**永久本地存储：localStorage**；操作方式同sessionStorage相同；API需要改成localStorage
+
+**本地数据库；后边学习到了再补充**
+
+#### svg
+
+svg是指可伸缩矢量图形，定于用于网络的基于矢量的图形；使用xml格式定义图形
 
 
 
