@@ -1,9 +1,7 @@
 ---
-title: frontEndStudy-2
-tags: HTML5,CSS3
+title: 前端进阶之路-HTML5
+tags: HTML5,本地存储
 ---
-
-## 前端进阶之路-HTML5/CSS3
 
 ### HTML5
 
@@ -196,9 +194,7 @@ sessionStorage.removeItem(key)
 
 **本地数据库；后边学习到了再补充**
 
-#### svg
 
-svg是指可伸缩矢量图形，定于用于网络的基于矢量的图形；使用xml格式定义图形
 
 
 
