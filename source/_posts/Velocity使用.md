@@ -1,7 +1,9 @@
 ---
 title: Velocity使用
 tags: velocity
+date: 2019-05-31 16:08:58
 ---
+
 
 velocity是一个加速js动画库；可依赖zepto和jq；也可以单独使用；具有色彩动画/变换/循环/缓动/SVG支持/滚动。兼容性：V1版本能够兼容IE8和android2.3；v2通用版本仅兼容Ie11等现代浏览器；[参考网址]([http://velocityjs.org](http://velocityjs.org/))
 
