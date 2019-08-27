@@ -5,7 +5,7 @@ tags: python3
 
 ## 标准数据类型
 
-六个标准数据类型：`Number数字/String字符串/List列表/Tuple元组/Set集合/Dictionary字典`；前三个为可变数据；后三个为可变数据
+六个标准数据类型：`Number数字/String字符串/List列表/Tuple元组/Set集合/Dictionary字典`；前三个为不可变数据；后三个为可变数据；python中变量不需要声明；单每个变量在使用前必须赋值；变量赋值后该变量才会被创建
 
 ### Number(数字)
 
