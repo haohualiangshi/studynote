@@ -1133,7 +1133,213 @@ props
 }
 ~~~
 
-`contextmenu:interval`:日视图中特定间隔标签上的右键单击事件;需要绑定的事件
+`contextmenu:interval`:日视图中特定间隔标签上的右键单击事件;需要绑定的数据
+
+~~~
+{
+  date: string
+  time: string
+  year: number
+  month: number
+  day: number
+  hour: number
+  minute: number
+  weekday: number
+  hasDay: boolean
+  hasTime: boolean
+  past: boolean
+  present: boolean
+  future: boolean
+}
+~~~
+
+contextmenu:time ：日视图中特定时间的右键单击事件。传递的事件是日期和时间对象
+
+~~~
+{
+  date: string
+  time: string
+  year: number
+  month: number
+  day: number
+  hour: number
+  minute: number
+  weekday: number
+  hasDay: boolean
+  hasTime: boolean
+  past: boolean
+  present: boolean
+  future: boolean
+  timeToY: (time: string | number | {hour: number, minute: number}, clamp: boolean = false): number
+}
+~~~
+
+input : `click:data`事件的别名；用于支持`v-model`
+
+~~~
+{
+  date: string
+  time: string
+  year: number
+  month: number
+  day: number
+  hour: number
+  minute: number
+  weekday: number
+  hasDay: boolean
+  hasTime: boolean
+  past: boolean
+  present: boolean
+  future: boolean
+}
+~~~
+
+mousedown:day.  在视图中天模块的`mousedown`事件
+
+~~~
+{
+  date: string
+  time: string
+  year: number
+  month: number
+  day: number
+  hour: number
+  minute: number
+  weekday: number
+  hasDay: boolean
+  hasTime: boolean
+  past: boolean
+  present: boolean
+  future: boolean
+  timeToY: (time: string | number | {hour: number, minute: number}, clamp: boolean = false): number
+}
+~~~
+
+mousedown:interval. :日视图中特定间隔标签处的mousedown事件
+
+~~~
+{
+  date: string
+  time: string
+  year: number
+  month: number
+  day: number
+  hour: number
+  minute: number
+  weekday: number
+  hasDay: boolean
+  hasTime: boolean
+  past: boolean
+  present: boolean
+  future: boolean
+}
+~~~
+
+mousedown:time ：白天视图中特定时间的mousedown事件
+
+~~~
+{
+  date: string
+  time: string
+  year: number
+  month: number
+  day: number
+  hour: number
+  minute: number
+  weekday: number
+  hasDay: boolean
+  hasTime: boolean
+  past: boolean
+  present: boolean
+  future: boolean
+  timeToY: (time: string | number | {hour: number, minute: number}, clamp: boolean = false): number
+}
+~~~
+
+mouseenter:day. :一天中的mouseenter事件
+
+~~~
+{
+  date: string
+  time: string
+  year: number
+  month: number
+  day: number
+  hour: number
+  minute: number
+  weekday: number
+  hasDay: boolean
+  hasTime: boolean
+  past: boolean
+  present: boolean
+  future: boolean
+  timeToY: (time: string | number | {hour: number, minute: number}, clamp: boolean = false): number
+}
+~~~
+
+mouseenter:interval. 日视图中特定间隔标签处的mouseenter事件
+
+~~~
+{
+  date: string
+  time: string
+  year: number
+  month: number
+  day: number
+  hour: number
+  minute: number
+  weekday: number
+  hasDay: boolean
+  hasTime: boolean
+  past: boolean
+  present: boolean
+  future: boolean
+}
+~~~
+
+ mouseenter:time  :日视图中特定时间的mouseenter事件。传递的事件是日期和时间对象。
+
+~~~
+{
+  date: string
+  time: string
+  year: number
+  month: number
+  day: number
+  hour: number
+  minute: number
+  weekday: number
+  hasDay: boolean
+  hasTime: boolean
+  past: boolean
+  present: boolean
+  future: boolean
+  timeToY: (time: string | number | {hour: number, minute: number}, clamp: boolean = false): number
+}
+~~~
+
+### v-calendar-daily
+
+prop
+
+| 属性名           | 属性值类型     | 属性默认值 | 属性描述                                                     |
+| ---------------- | -------------- | ---------- | ------------------------------------------------------------ |
+| color            | string         | undefined  |                                                              |
+| dark             | boolean        |            |                                                              |
+| day-format       | function       | null       | 将一天中出现的字符串格式化为指定区域设置                     |
+| end              | string         | undefined  | 日历（包括）的结束日期，格式为YYYY-MM-DD。根据日历的类型，这可能会被忽略 |
+| first-interval   | number\|string | 0          | 在日视图中显示的第一个间隔。如果intervalMinutes设置为60并且设置为9，则视图中的第一次是9am |
+| hide-header      | boolean        |            | 如果日视图顶部的标题应该可见                                 |
+| interval-count   | number\|string | 24         | 日视图中显示的间隔数                                         |
+| interval-height  | number\|string | 40         | 日视图中间隔的高度（以像素为单位）                           |
+| interval-minutes | number\|string | 60         | 日视图中间隔的分钟数。常用间隔为60分钟，因此间隔为一小时。   |
+| interval-style   | function       | null       | 返回要应用于间隔的CSS样式。                                  |
+| light            | boolean        |            |                                                              |
+| locale           | string         |            | 日历的区域设置                                               |
+| max-days         | number         | 7          | 如果未设置结束日期，则在自定义日历中显示的最大天数           |
+| now              | string         | undefined  | 覆盖现在考虑的日期和时间。格式为YYYY-MM-DD hh：mm：ss。日历根据现在的样式。 |
+
+
 
 
 
